@@ -19,25 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/testdata', function () {
+Route::get('/producten', function () {
 
     return response()->json([
-
-        'status' => 'success',
-
-        'data' => [
-
-            'id' => 1,
-
-            'name' => 'Test Gebruiker',
-
-            'email' => 'test@example.com',
-
-            'roles' => ['admin', 'editor'],
-
+        'producten' => [
+            ['product_id' => 1, 'product_name' => 'Product A', 'price' => 100.00],
+            ['product_id' => 2, 'product_name' => 'Product B', 'price' => 150.00],
         ]
-
     ]);
 
 });
- 
