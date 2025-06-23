@@ -2,17 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 Route::get('/producten', function () {
-    $producten = Product::all()->map(function ($product) {
-        return [
-            'product_id' => $product->id,
-            'product_name' => $product->name,
-            'price' => $product->price
-        ];
-    });
-
     return response()->json([
-        'producten' => $producten
+        'producten' => Product::all()
     ]);
+});
+
+
+Route::post('/producten', function (Request $request) {
+    $product = Product::create($request->all());
+    return response()->json($product);
 });
