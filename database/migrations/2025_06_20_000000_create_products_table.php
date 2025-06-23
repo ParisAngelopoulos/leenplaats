@@ -13,6 +13,8 @@ return new class extends Migration {
         $table->text('description')->nullable();
         $table->decimal('price', 8, 2);
         $table->boolean('is_available')->default(true);
+        $table->decimal('latitude', 10, 7)->nullable();
+        $table->decimal('longitude', 10, 7)->nullable();
         $table->timestamps();
     });
 }
