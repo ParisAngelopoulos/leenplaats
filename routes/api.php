@@ -16,7 +16,6 @@ Route::get('/producten', function (Request $request) {
     if ($request->has('postcode')) {
         $query->where('postcode', $request->input('postcode'));
     }
-
     return $query->get();
 });
 
