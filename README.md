@@ -5,7 +5,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white" alt="Laravel 10">
   <img src="https://img.shields.io/badge/PHP-8.1+-777BB4?logo=php&logoColor=white" alt="PHP 8.1+">
-  <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite">
   <img src="https://img.shields.io/badge/status-in%20ontwikkeling-2f6f5e" alt="Status: in ontwikkeling">
 </p>
 
@@ -33,27 +33,19 @@ Ik bouw het met **Laravel**. In dit project leer ik hoe MVC, migraties en Eloque
 
 ## Zelf draaien
 
-Je hebt PHP 8.1+, Composer, Node.js en MySQL nodig.
+Je hebt PHP 8.1+ en Composer nodig. Een database hoef je niet in te stellen: Leenplaats gebruikt **SQLite**, een bestand in `database/database.sqlite`.
 
 ```bash
 git clone https://github.com/ParisAngelopoulos/leenplaats.git
 cd leenplaats
 composer install
-npm install
 cp .env.example .env
 php artisan key:generate
-```
-
-Zet in `.env` de gegevens van je database (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) en maak de tabellen aan:
-
-```bash
 php artisan migrate --seed
 php artisan serve
 ```
 
-`--seed` vult de database met voorbeelddata. De testaccounts (`paris@voorbeeld.nl`, `sanne@voorbeeld.nl`, `daan@voorbeeld.nl` en `lisa@voorbeeld.nl`) hebben allemaal het wachtwoord `welkom123`. Wil je opnieuw beginnen, dan zet `php artisan migrate:fresh --seed` alles terug.
-
-De site draait dan op http://localhost:8000.
+`migrate --seed` maakt het databasebestand aan en vult het met voorbeelddata. De site draait dan op http://localhost:8000. De testaccounts (`paris@voorbeeld.nl`, `sanne@voorbeeld.nl`, `daan@voorbeeld.nl` en `lisa@voorbeeld.nl`) hebben allemaal het wachtwoord `welkom123`. Wil je opnieuw beginnen, dan zet `php artisan migrate:fresh --seed` alles terug.
 
 ## Mappen
 
