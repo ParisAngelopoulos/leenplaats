@@ -3,7 +3,7 @@
   <text x="72" y="118" font-size="20" font-weight="600" fill="#2f6f5e" letter-spacing="2">PROJECT · 2025</text>
   <text x="72" y="190" font-size="64" font-weight="700" fill="#1c1c1c">Leenplaats</text>
   <text x="72" y="244" font-size="26" fill="#5f5f5f">Spullen lenen en reserveren</text>
-  <rect x="72" y="300" width="89" height="36" rx="18" fill="#fff" stroke="#d1dfdc"/><text x="117" y="324" text-anchor="middle" font-size="16" fill="#3a3a3a">Laravel</text><rect x="171.2" y="300" width="51" height="36" rx="18" fill="#fff" stroke="#d1dfdc"/><text x="197" y="324" text-anchor="middle" font-size="16" fill="#3a3a3a">PHP</text><rect x="232.0" y="300" width="70" height="36" rx="18" fill="#fff" stroke="#d1dfdc"/><text x="267" y="324" text-anchor="middle" font-size="16" fill="#3a3a3a">MySQL</text>
+  <rect x="72" y="300" width="89" height="36" rx="18" fill="#fff" stroke="#d1dfdc"/><text x="117" y="324" text-anchor="middle" font-size="16" fill="#3a3a3a">Laravel</text><rect x="171.2" y="300" width="51" height="36" rx="18" fill="#fff" stroke="#d1dfdc"/><text x="197" y="324" text-anchor="middle" font-size="16" fill="#3a3a3a">PHP</text><rect x="232.0" y="300" width="80" height="36" rx="18" fill="#fff" stroke="#d1dfdc"/><text x="272" y="324" text-anchor="middle" font-size="16" fill="#3a3a3a">SQLite</text>
   <g transform="translate(760 70)">
     <rect width="450" height="350" rx="14" fill="#fff"/>
     <rect y="336" width="450" height="14" fill="#fff"/>
