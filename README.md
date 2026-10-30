@@ -17,15 +17,17 @@ Ik bouw het met **Laravel**. In dit project leer ik hoe MVC, migraties en Eloque
 
 ## Wat er al staat
 
-- **Producten**: een tabel met naam, beschrijving, prijs en of het product beschikbaar is.
+- **Productoverzicht** op de homepage: alle spullen met hun prijs per dag, of ze vrij zijn, en de komende reserveringen met de naam van wie het leent.
+- **Producten**: naam, beschrijving, prijs en of het product beschikbaar is.
 - **Reserveringen**: koppelen een product aan een gebruiker, met een begin- en einddatum. Wordt een product of gebruiker verwijderd, dan verdwijnen de reserveringen ook.
-- **Gebruikers**: het standaard Laravel-gebruikersmodel.
-- `ProductController` geeft alle producten terug als JSON.
+- **Relaties in Eloquent**: een product heeft reserveringen, een reservering hoort bij een product en een gebruiker.
+- **API**: `GET /api/producten` geeft alle producten als JSON, met `POST /api/producten` voeg je er een toe.
+- **Seeders** met voorbeelddata: 4 gebruikers, 8 producten en 6 reserveringen.
 
 ## Wat er nog komt
 
 - [ ] Inloggen en registreren
-- [ ] Pagina's om producten te bekijken en toe te voegen
+- [ ] Zelf een product toevoegen via de site
 - [ ] Een product reserveren voor een periode
 - [ ] Een overzicht van je eigen reserveringen
 
@@ -45,9 +47,11 @@ php artisan key:generate
 Zet in `.env` de gegevens van je database (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) en maak de tabellen aan:
 
 ```bash
-php artisan migrate
+php artisan migrate --seed
 php artisan serve
 ```
+
+`--seed` vult de database met voorbeelddata. De testaccounts (`paris@voorbeeld.nl`, `sanne@voorbeeld.nl`, `daan@voorbeeld.nl` en `lisa@voorbeeld.nl`) hebben allemaal het wachtwoord `welkom123`. Wil je opnieuw beginnen, dan zet `php artisan migrate:fresh --seed` alles terug.
 
 De site draait dan op http://localhost:8000.
 
@@ -57,6 +61,8 @@ De site draait dan op http://localhost:8000.
 | --- | --- |
 | `app/Models` | `Product`, `Reservation` en `User` |
 | `app/Http/Controllers` | `ProductController` |
+| `database/seeders` | Voorbeelddata voor gebruikers, producten en reserveringen |
+| `resources/views/producten.blade.php` | Het productoverzicht |
 | `database/migrations` | De tabellen voor producten en reserveringen |
 | `routes/web.php` | De routes van de site |
 

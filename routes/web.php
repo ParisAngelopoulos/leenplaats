@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Overzicht van alle producten met hun komende reserveringen
 Route::get('/', function () {
-    return view('welcome');
+    $products = Product::with(['reservations' => fn ($q) => $q->where('end_date', '>=', now()->startOfDay())->orderBy('start_date'), 'reservations.user'])
+        ->orderBy('name')
+        ->get();
+
+    return view('producten', ['products' => $products]);
 });
