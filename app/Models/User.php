@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservation::class);
     }
+
+    // The products this user offers to lend out
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 }

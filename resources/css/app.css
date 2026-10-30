@@ -1,0 +1,12 @@
+/* Built into public/css/app.css with: npx tailwindcss -i resources/css/app.css -o public/css/app.css --minify */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary { @apply inline-block bg-brand text-white font-semibold rounded-lg px-4 py-2 hover:bg-brand-dark transition; }
+  .btn-secondary { @apply inline-block bg-white text-brand font-semibold border border-brand/40 rounded-lg px-4 py-2 hover:bg-brand-soft transition; }
+  .input { @apply mt-1 block w-full rounded-lg border border-stone-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand; }
+  .label { @apply text-sm font-medium text-stone-700; }
+  .badge { @apply inline-block whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-medium; }
+}
