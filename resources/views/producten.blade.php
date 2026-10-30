@@ -44,7 +44,7 @@
             @endforeach
         </div>
 
-        <p class="text-sm text-stone-500 mt-10">De producten staan ook als JSON op <a class="underline" href="/api/producten">/api/producten</a>.</p>
+        <p class="text-sm text-stone-500 mt-10">De producten staan ook als JSON op <a class="underline" href="{{ url('api/producten') }}">api/producten</a>.</p>
     </main>
 </body>
 </html>
