@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Product;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,23 @@ use App\Models\Product;
 |
 */
 
-// Overzicht van alle producten met hun komende reserveringen
-Route::get('/', function () {
-    $products = Product::with(['reservations' => fn ($q) => $q->where('end_date', '>=', now()->startOfDay())->orderBy('start_date'), 'reservations.user'])
-        ->orderBy('name')
-        ->get();
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
 
-    return view('producten', ['products' => $products]);
+Route::middleware('guest')->group(function () {
+    Route::get('/inloggen', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/inloggen', [AuthController::class, 'login']);
+    Route::get('/registreren', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/registreren', [AuthController::class, 'register']);
 });
+
+Route::middleware('auth')->group(function () {
+    Route::post('/uitloggen', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/producten/nieuw', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/producten', [ProductController::class, 'store'])->name('products.store');
+    Route::patch('/producten/{product}/beschikbaar', [ProductController::class, 'toggle'])->name('products.toggle');
+    Route::post('/producten/{product}/reserveren', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::get('/mijn-reserveringen', [ReservationController::class, 'index'])->name('reservations.index');
+    Route::delete('/reserveringen/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
+});
+
+Route::get('/producten/{product}', [ProductController::class, 'show'])->name('products.show');

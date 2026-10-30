@@ -15,21 +15,21 @@ Leenplaats is een webapp waar mensen spullen aan elkaar kunnen uitlenen. Je zet 
 
 Ik bouw het met **Laravel**. In dit project leer ik hoe MVC, migraties en Eloquent-modellen in de praktijk samenwerken.
 
-## Wat er al staat
+## Functies
 
-- **Productoverzicht** op de homepage: alle spullen met hun prijs per dag, of ze vrij zijn, en de komende reserveringen met de naam van wie het leent.
-- **Producten**: naam, beschrijving, prijs en of het product beschikbaar is.
-- **Reserveringen**: koppelen een product aan een gebruiker, met een begin- en einddatum. Wordt een product of gebruiker verwijderd, dan verdwijnen de reserveringen ook.
-- **Relaties in Eloquent**: een product heeft reserveringen, een reservering hoort bij een product en een gebruiker.
-- **API**: `GET /api/producten` geeft alle producten als JSON, met `POST /api/producten` voeg je er een toe.
-- **Seeders** met voorbeelddata: 4 gebruikers, 8 producten en 6 reserveringen.
+- **Inloggen en registreren**, met testaccounts onder het inlogformulier.
+- **Alle spullen bekijken**: prijs per dag, van wie het is, en of het vrij of gereserveerd is.
+- **Iets aanbieden**: zet zelf een product online. Je kunt het later tijdelijk uit de verhuur halen.
+- **Reserveren** voor een periode. Overlapt die met een andere reservering, dan krijg je een melding; je eigen spullen kun je niet reserveren.
+- **Mijn reserveringen**: een overzicht met het aantal dagen en de prijs, en een knop om te annuleren.
+- **API**: `GET /api/producten` geeft alle producten als JSON.
 
-## Wat er nog komt
+## Hoe het in elkaar zit
 
-- [ ] Inloggen en registreren
-- [ ] Zelf een product toevoegen via de site
-- [ ] Een product reserveren voor een periode
-- [ ] Een overzicht van je eigen reserveringen
+- **Eloquent-relaties**: een gebruiker heeft producten en reserveringen, een product heeft een eigenaar en reserveringen.
+- **Controllers**: `AuthController`, `ProductController` en `ReservationController`, met validatie op elk formulier.
+- **Middleware**: pagina's om iets aan te bieden of te reserveren zijn alleen voor ingelogde gebruikers.
+- **Blade-layout** met Tailwind CSS (gebouwd naar `public/css/app.css` met `npm run build:css`).
 
 ## Zelf draaien
 
